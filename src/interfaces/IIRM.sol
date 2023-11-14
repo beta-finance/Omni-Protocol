@@ -8,7 +8,7 @@ pragma solidity ^0.8.19;
 interface IIRM {
     /// Events
     event SetIRMForMarket(address indexed market, uint8[] tranches, IRMConfig[] configs);
-    
+
     /**
      * @notice This structure defines the configuration for the interest rate model.
      * @dev It contains the kink utilization point, and the interest rates at 0%, kink, and 100% utilization.

@@ -14,7 +14,7 @@ interface IOmniTokenNoBorrow is IOmniTokenBase {
     event Seize(bytes32 indexed account, bytes32 indexed to, uint256 amount, uint256[] seizeShares);
     event SetSupplyCap(uint256 supplyCap);
     event Transfer(bytes32 indexed from, bytes32 indexed to, uint256 amount);
-    
+
     /**
      * @notice Deposits a specified amount to the account.
      * @param _subId The sub-account identifier.

@@ -182,9 +182,7 @@ interface IOmniPool {
      * @param _params The liquidation parameters.
      * @return seizedShares The amount of shares seized from the liquidated account.
      */
-    function liquidate(
-        LiquidationParams calldata _params
-    ) external returns (uint256[] memory seizedShares);
+    function liquidate(LiquidationParams calldata _params) external returns (uint256[] memory seizedShares);
 
     /**
      * @dev Distributes loss incurred in a market to a specified tranche of accounts.
@@ -262,7 +260,8 @@ interface IOmniPool {
      * @param _market The address of the market.
      * @param _config The liquidation bonus configuration data.
      */
-    function setLiquidationBonusConfiguration(address _market, LiquidationBonusConfiguration calldata _config) external;
+    function setLiquidationBonusConfiguration(address _market, LiquidationBonusConfiguration calldata _config)
+        external;
 
     /**
      * @notice Sets the tranche count for a specific market.

@@ -118,7 +118,9 @@ contract OmniToken is IOmniToken, WithUnderlying, ReentrancyGuardUpgradeable {
                 uint256 depositInterestAmount = 0;
                 uint256 interestAmountProportion;
                 for (uint8 ti = trancheCount; ti > trancheIndex;) {
-                    unchecked { --ti; }
+                    unchecked {
+                        --ti;
+                    }
                     interestAmountProportion = interestAmount * trancheDepositAmounts_[ti] / totalDeposit;
                     trancheAccruedDepositCache[ti] += interestAmountProportion;
                     depositInterestAmount += interestAmountProportion;

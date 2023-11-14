@@ -65,7 +65,8 @@ contract IRM is IIRM, AccessControl, Initializable {
             interestRate += (_utilization * (_config.mid - _config.start)) / _config.kink;
         } else {
             interestRate = _config.mid;
-            interestRate += ((_utilization - _config.kink) * (_config.end - _config.mid)) / (UTILIZATION_SCALE - _config.kink);
+            interestRate +=
+                ((_utilization - _config.kink) * (_config.end - _config.mid)) / (UTILIZATION_SCALE - _config.kink);
         }
     }
 
@@ -83,8 +84,13 @@ contract IRM is IIRM, AccessControl, Initializable {
             revert("IRM::setIRMForMarket: Tranches and configs length mismatch.");
         }
         for (uint256 i = 0; i < _tranches.length; ++i) {
-            if (_configs[i].kink == 0 || _configs[i].kink >= UTILIZATION_SCALE) { revert("IRM::setIRMForMarket: Bad kink value."); }
-            if (_configs[i].start > _configs[i].mid || _configs[i].mid > _configs[i].end || _configs[i].end > MAX_INTEREST_RATE) {
+            if (_configs[i].kink == 0 || _configs[i].kink >= UTILIZATION_SCALE) {
+                revert("IRM::setIRMForMarket: Bad kink value.");
+            }
+            if (
+                _configs[i].start > _configs[i].mid || _configs[i].mid > _configs[i].end
+                    || _configs[i].end > MAX_INTEREST_RATE
+            ) {
                 revert("IRM::setIRMForMarket: Bad interest value.");
             }
             marketIRMConfigs[_market][_tranches[i]] = _configs[i];

@@ -1265,7 +1265,6 @@ contract TestOmniPool is Test {
         pool.unpause();
     }
 
-
     function test_RevertEnterMarketsDuplicates() public {
         address[] memory markets = new address[](5);
         markets[0] = address(oToken);

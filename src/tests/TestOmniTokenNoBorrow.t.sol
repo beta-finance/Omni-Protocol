@@ -116,7 +116,7 @@ contract TestOmniTokenNoBorrow is Test {
         uint256 balBefore = uToken.balanceOf(address(this));
         oToken.withdraw(1, 10e18);
         uint256 balAfter = uToken.balanceOf(address(this));
-        assertEq(balAfter - balBefore, 10e18, "underlying balanceOf is incorrect"); 
+        assertEq(balAfter - balBefore, 10e18, "underlying balanceOf is incorrect");
     }
 
     function test_WithdrawNoBorrows() public {
@@ -256,7 +256,7 @@ contract TestOmniTokenNoBorrow is Test {
         pool.enterMarkets(1, markets);
 
         pool.borrow(1, address(oToken2), 8e23);
-        
+
         vm.expectRevert("OmniTokenNoBorrow::withdraw: Not healthy.");
         oToken.withdraw(1, 1e6 * 1e18);
     }

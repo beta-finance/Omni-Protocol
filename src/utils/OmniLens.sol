@@ -37,7 +37,8 @@ contract OmniLens {
         uint256 cumulativeTotalBorrow;
         for (uint8 i = _market.trancheCount(); i > 0; --i) {
             uint8 innerI = i - 1;
-            (uint256 totalDeposit, uint256 totalBorrow, uint256 totalDepositShare, uint256 totalBorrowShare) = _market.tranches(innerI);
+            (uint256 totalDeposit, uint256 totalBorrow, uint256 totalDepositShare, uint256 totalBorrowShare) =
+                _market.tranches(innerI);
             cumulativeTotalDeposit += totalDeposit;
             cumulativeTotalBorrow += totalBorrow;
             res[innerI] = MarketTrancheOverview({

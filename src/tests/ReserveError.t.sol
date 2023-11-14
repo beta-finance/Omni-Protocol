@@ -110,14 +110,14 @@ contract TestCustom is Test {
         uint256 feeFromTranche2 = 5_000e18 * 0.2 * 0.1; // 20% for tranche2
         uint256 feeFromTranche1 = 10_000e18 * 0.1 * 0.1; // 10% for tranche1
         uint256 expectedReserveRevenue = feeFromTranche2 + feeFromTranche1;
-        (uint256 tda2, , uint256 tds2, ) = oToken.tranches(2);
-        (uint256 tda1,,uint256 tds1,) = oToken.tranches(1);
+        (uint256 tda2,, uint256 tds2,) = oToken.tranches(2);
+        (uint256 tda1,, uint256 tds1,) = oToken.tranches(1);
         // uint256 expectedReserve2 = feeFromTranche2 * (tda2) / tds2;
         // uint256 expectedReserve1 = feeFromTranche1 * (tda1) / tds1;
 
         bytes32 reserveAcc = reserve.toAccount(0);
-        (uint256 ads2, ) = oToken.getAccountSharesByTranche(reserveAcc, 2);
-        (uint256 ads1, ) = oToken.getAccountSharesByTranche(reserveAcc, 1);
+        (uint256 ads2,) = oToken.getAccountSharesByTranche(reserveAcc, 2);
+        (uint256 ads1,) = oToken.getAccountSharesByTranche(reserveAcc, 1);
         console.log("Reserve shares ", ads2 / 1e18, ads1 / 1e18);
         console.log("Amounts ", tda2 / 1e18, tda1 / 1e18);
         console.log("Shares ", tds2 / 1e18, tds1 / 1e18);
@@ -141,16 +141,8 @@ contract TestCustom is Test {
         pool.borrow(1, market, 10_000e18);
 
         console.log("Before: ");
-        (
-            uint256 totalDepositAmount2Before,
-            ,
-            uint256 totalDepositShare2Before,
-        ) = oToken.tranches(2);
-        (
-            uint256 totalDepositAmount1Before,
-            ,
-            uint256 totalDepositShare1Before,
-        ) = oToken.tranches(1);
+        (uint256 totalDepositAmount2Before,, uint256 totalDepositShare2Before,) = oToken.tranches(2);
+        (uint256 totalDepositAmount1Before,, uint256 totalDepositShare1Before,) = oToken.tranches(1);
 
         console.log("totalDepositAmount2Before", totalDepositAmount2Before / 1e18);
         console.log("totalDepositShare2Before ", totalDepositShare2Before / 1e18);
@@ -163,16 +155,8 @@ contract TestCustom is Test {
         oToken.accrue();
 
         console.log("After: ");
-        (
-            uint256 totalDepositAmount2After,
-            ,
-            uint256 totalDepositShare2After,
-        ) = oToken.tranches(2);
-        (
-            uint256 totalDepositAmount1After,
-            ,
-            uint256 totalDepositShare1After,
-        ) = oToken.tranches(1);
+        (uint256 totalDepositAmount2After,, uint256 totalDepositShare2After,) = oToken.tranches(2);
+        (uint256 totalDepositAmount1After,, uint256 totalDepositShare1After,) = oToken.tranches(1);
 
         console.log("totalDepositAmountAfter2", totalDepositAmount2After / 1e18);
         console.log("totalDepositShareAfter2 ", totalDepositShare2After / 1e18);
@@ -192,7 +176,7 @@ contract TestCustom is Test {
 contract MockIRM {
     function getInterestRate(address _market, uint8 _tranche, uint256 _totalDeposit, uint256 _totalBorrow)
         external
-        pure 
+        pure
         returns (uint256)
     {
         if (_tranche == 2) {

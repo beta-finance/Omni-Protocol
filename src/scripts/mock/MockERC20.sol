@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.19;
 
-import 'openzeppelin/contracts/access/AccessControl.sol';
-import 'openzeppelin/contracts/token/ERC20/ERC20.sol';
+import "openzeppelin/contracts/access/AccessControl.sol";
+import "openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract MockERC20 is AccessControl, ERC20 {
-    bytes32 public constant MINTER_ROLE = keccak256('MINTER_ROLE');
+    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     uint8 private __decimals = 18;
 
     constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
