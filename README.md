@@ -15,7 +15,7 @@ fluidity of the money market landscape, offering
 a robust foundation for fostering a more inclusive
 and efficient financial ecosystem.
 
-There are eight files that are in the scope for the audit:
+There are eight files that make up the core protocol:
 - `OmniPool.sol`: The main contract of the protocol, responsible for managing configurations and risk management for the protocol.
 - `OmniToken.sol`: Contract responsible for handling pooling assets that may be used as collateral and are borrowable for the protocol.
 - `OmniTokenNoBorrow.sol`: Contract responsible for handling deposits of tokens that are not borrowable, i.e. will only be used as collateral for the protocol.
@@ -27,4 +27,4 @@ There are eight files that are in the scope for the audit:
 
 All contracts follow the `TransparentUpgradeableProxy` pattern with `ProxyAdmin`, for more information see [here](https://docs.openzeppelin.com/contracts/4.x/api/proxy#TransparentUpgradeableProxy).
 
-It is highly encouraged that auditors read the [Omni Protocol Whitepaper](https://www.betafinance.org/OmniByBeta_Whitepaper.pdf) within the repository. 
+It is highly encouraged that interested parties read the [Omni Protocol Whitepaper](https://www.betafinance.org/OmniByBeta_Whitepaper.pdf).
