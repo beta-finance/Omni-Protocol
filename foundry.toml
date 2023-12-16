@@ -12,5 +12,14 @@ remappings = [
 [rpc_endpoints]
 mainnet = "${ETH_RPC_URL_1}"
 
+# commented out so that when running "forge test"
+# foundry won't waste too much time running the foundry
+# version of the invariant tests; they are unable too
+# break the same invariants which Medusa can. Uncomment
+# this to run Foundry invariant testing when required,
+# want to give the fuzzer around 10 minutes
+#[fuzz]
+#runs = 40000
+#max_test_rejects = 999999999
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

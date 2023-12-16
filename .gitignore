@@ -10,3 +10,7 @@ docs/
 .env
 
 .DS_STORE
+
+# fuzzer files
+crytic-export/
+**/coverage**
